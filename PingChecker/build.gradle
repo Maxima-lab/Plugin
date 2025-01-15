@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.example'  // Change to your package's group name
+version = '1.0-SNAPSHOT'  // Version of your plugin
+sourceCompatibility = '17'  // Use Java 17 for your plugin
+targetCompatibility = '17'
+
+repositories {
+    mavenCentral()
+    maven { url = uri("https://hub.spigotmc.org/nexus/content/repositories/public/") }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT'  // Change version if needed
+}
+
+jar {
+    // Name the JAR file
+    archiveBaseName = 'PingChecker'
+    archiveVersion = version
+}
+
+task buildPluginJar(type: Jar) {
+    from sourceSets.main.output
+    from('src/main/resources') {
+        include 'plugin.yml'  // Include plugin.yml in the JAR
+    }
+    destinationDirectory = file("$buildDir/libs")  // Output the JAR to build/libs
+}

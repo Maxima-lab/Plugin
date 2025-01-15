@@ -1,0 +1,9 @@
+name: PingChecker
+version: 1.0
+main: com.example.pingchecker.PingChecker
+description: A simple plugin to check player ping.
+commands:
+  ping:
+    description: Check your ping or check a player's ping from the console.
+    usage: /ping [player]
+    permission: pingchecker.use
